@@ -5,16 +5,23 @@ import { AppComponent } from './app.component';
 import { TodosComponent } from './todos/todos.component';
 import { TodoFormComponent } from './todo-form/todo-form.component';
 import { FormsModule } from '@angular/forms';
+import { AppRoutingModule } from './app-routing.module';
+
+import { EditTaskComponent } from './edit-task/edit-task.component';
+import { AddTaskComponent } from './add-task/add-task.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TodosComponent,
-    TodoFormComponent
+    TodoFormComponent,
+    EditTaskComponent,
+    AddTaskComponent
   ],
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

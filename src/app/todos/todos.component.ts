@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router'; 
+
 import {TodosService} from '../shared/todos.service';
 
 @Component({
@@ -8,7 +10,7 @@ import {TodosService} from '../shared/todos.service';
 })
 export class TodosComponent implements OnInit {
 
-  constructor(public todosService: TodosService) { }
+  constructor(public todosService: TodosService, private router: Router) { }
 
   ngOnInit() {
   }
@@ -22,7 +24,7 @@ export class TodosComponent implements OnInit {
   }
 
   editTask(id: number) {
-    console.log(id)
+    this.router.navigate(['/edit', id]);
   }
 
 }
