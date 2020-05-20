@@ -1,5 +1,8 @@
 # AdcomboTest
 
+It is a test project for Adcombo company.
+Link for [requirement description](https://gist.github.com/Cobr3n/5cc5e0300e2f54f49aa0e9e1af72e3d0).
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.0.7.
 
 ## Development server

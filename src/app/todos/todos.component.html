@@ -1,16 +1,56 @@
+<div *ngIf="tasks.length; else noTodos">
 
-<ul *ngIf="todosService.todos.length; else noTodos">
-    <li *ngFor="let todo of todosService.todos; let i = index">
-        <span [class.done] = "todo.completed">
-            <input type="checkbox" [checked]="todo.completed" (change)="onChange(todo.id)">
-            <div (click)="editTask(todo.id)"><strong>{{i + 1}}</strong> {{ todo.title }}</div>
+    <div class="table">
+        <div></div>
+        <div></div>
+        <div></div>
+        <!-- <div>
+            <button [ngClass]="{'active': filter === 'all'}" (click)="filter='all'">Все</button>
+            <button [ngClass]="{'active': filter === 'regular'}" (click)="filter='regular'">Обычные</button>
+            <button [ngClass]="{'active': filter === 'important'}" (click)="filter='important'">Важные</button>
+            <button [ngClass]="{'active': filter === 'very important'}" (click)="filter='very important'">Очень важные</button>
+        </div> -->
+        <select>
+            <option [ngClass]="{'active': filter === 'all'}" (click)="filter='all'">Все</option>
+            <option [ngClass]="{'active': filter === 'regular'}" (onchange)="filter='regular'">Обычные</option>
+            <option [ngClass]="{'active': filter === 'important'}" (select)="filter='important'">Важные</option>
+            <option [ngClass]="{'active': filter === 'very important'}" (click)="filter='very important'">Очень важные</option>
+        </select>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <button>Удалить все</button>
+    </div>
+
+    <div class="table">
+        <div>Номер</div>
+        <div>Название</div>
+        <div>Описание</div>
+        <div>Важность задачи</div>
+        <div>Created date</div>
+        <div>Deadline date</div>
+        <div>Completed date</div>
+        <div>Править</div>
+        <div>Удалить</div>
+    </div>
+
+    <div class="table" *ngFor="let todo of todosFiltered(); let i = index">
+        <div [class.done]="todo.completed" (click)="onChange(todo.id)">{{i + 1}}</div>
+        <div [class.done]="todo.completed" (click)="onChange(todo.id)">{{ todo.title }}</div>
+        <div [class.done]="todo.completed" (click)="onChange(todo.id)">{{ todo.description }}</div>
+        <div [class.done]="todo.completed" (click)="onChange(todo.id)">{{ todo.importance }}</div>
+        <div [class.done]="todo.completed" (click)="onChange(todo.id)">{{todo.created | date:'shortDate'}}</div>
+        <span [class.expired]="todo.expired">
+            <div [class.done]="todo.completed" (click)="onChange(todo.id)">
+                {{todo.deadlineDate | date:'shortDate'}}</div>
         </span>
+        <div [class.done]="todo.completed" (click)="onChange(todo.id)">{{todo.done | date:'shortDate'}}</div>
+        <button class="edit" (click)="editTask(todo.id)">Edit</button>
+        <button class="rm" (click)="removeTodo(todo.id)">&times;</button>
+    </div>
 
-        <small>{{todo.date | date:'medium'}}</small>
-
-        <button class="rm" (click) = "removeTodo(todo.id)">&times;</button>
-    </li>
-</ul>
+</div>
 
 <ng-template #noTodos>
     <p style="text-align:center;">No todos now!</p>

@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router'; 
-import { TodoFormComponent } from '../todo-form/todo-form.component'
 
 @Component({
   selector: 'app-add-task',
@@ -10,6 +9,9 @@ import { TodoFormComponent } from '../todo-form/todo-form.component'
 export class AddTaskComponent implements OnInit {
   
   title: string = '';
+  description: string = '';
+  importance: string = ''.toLowerCase();
+  deadlineDate: any = '';
 
   constructor(private router: Router) { }
 
@@ -18,20 +20,27 @@ export class AddTaskComponent implements OnInit {
 
   addTodo() {
     console.log('add to LS');
-    console.log()
 
-      
-    // localStorage.setItem('Todo', JSON.stringify(TodoFormComponent.todosService.addTodo(todo)));
-    // console.log(todo);
+    let tasks = [];
+    if (localStorage.getItem('tasks')) {
+      tasks = JSON.parse(localStorage.getItem('tasks'));
+    }
+    tasks.push({
+      'id': Math.random().toString(36),
+      'title': this.title,
+      'description': this.description,
+      'importance': this.importance,
+      'deadlineDate': this.deadlineDate,
+      'completed': false,
+      'created': new Date(),
+    });
+    localStorage.setItem('tasks', JSON.stringify(tasks));
+
     this.router.navigate(['/']);
-    // const todo: Todo = {
-    //   title: this.title,
-    //   id: Date.now(),
-    //   completed: false,
-    //   date: new Date()
-    // }
-    // this.todosService.addTodo(todo)
-    // this.title = ''
+    this.title = '',
+    this.description = '',
+    this.importance = '',
+    this.deadlineDate = ''
   }
 
 }

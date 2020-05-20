@@ -30,6 +30,10 @@ ul {
     text-decoration: line-through;
   }
   
+  .expired {
+    color: red;
+  }
+
   .rm {
     $color: red;
     border-radius: 50%;
@@ -66,3 +70,18 @@ ul {
       padding: 0 .5rem;
     }
   }
+
+  .active {
+    background: lightgreen;
+  }
+
+.table {
+  display: grid;
+    grid-template-columns: repeat(9, 1fr);
+    grid-template-rows: auto;
+    grid-gap: 10px;
+    box-sizing: border-box;
+    border: solid 1px grey;
+    align-items: center;
+    text-align: center;
+}

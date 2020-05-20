@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { TodosComponent } from './todos/todos.component';
-import { TodoFormComponent } from './todo-form/todo-form.component';
 import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 
@@ -14,7 +13,6 @@ import { AddTaskComponent } from './add-task/add-task.component';
   declarations: [
     AppComponent,
     TodosComponent,
-    TodoFormComponent,
     EditTaskComponent,
     AddTaskComponent
   ],
